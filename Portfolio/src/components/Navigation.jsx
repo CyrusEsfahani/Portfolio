@@ -1,16 +1,17 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
-const Navigation = ({ activeSection, setActiveSection }) => {
+const Navigation = () => {
     return (
         
         <nav>
-            <a href="#about" className={activeSection === 'about' ? 'active' : ''} onClick={() => setActiveSection('about')}>About Me</a>
-            <a href="#portfolio" className={activeSection === 'portfolio' ? 'active' : ''} onClick={() => setActiveSection('portfolio')}>Portfolio</a>
-            <a href="#contact" className={activeSection === 'contact' ? 'active' : ''} onClick={() => setActiveSection('contact')}>Contact</a>
-            <a href="#resume" className={activeSection === 'resume' ? 'active' : ''} onClick={() => setActiveSection('resume')}>Resume</a>
+          <NavLink to="/about" className= {({isActive}) => isActive? "active":"link"}>About Me</NavLink>
+          <NavLink to="/portfolio" className= {({isActive}) => isActive? "active":"link"}>Porfolio</NavLink>
+          <NavLink to="/resume" className= {({isActive}) => isActive? "active":"link"}>Resume</NavLink>
+          <NavLink to="/contact" className= {({isActive}) => isActive? "active":"link"}>Contact Me</NavLink>
         </nav>
       
     )
     }
 
-    export default Navigation
+    export default Navigation;

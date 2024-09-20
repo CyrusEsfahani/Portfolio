@@ -15,6 +15,21 @@ export default function Contact() {
     //     </p>
     //     </section>
     // )};
+    const handleBlur = (field) => {
+        let newErrors = { ...errors }
+        if (field === 'name' && !name) {
+          newErrors.name = 'Name is required'
+        } else if (field === 'email') {
+          if (!email) {
+            newErrors.email = 'Email is required'
+          } else if (!validateEmail(email)) {
+            newErrors.email = 'Valid email is required'
+          }
+        } else if (field === 'message' && !message) {
+          newErrors.message = 'Message is required'
+        }
+        setErrors(newErrors)
+      }
     const handleSubmit = (event) => {
         event.preventDefault()
         let valid = true
@@ -42,7 +57,7 @@ export default function Contact() {
         }
     }
     
-      return (
+    return (
         <section id="contact">
           <h2>Contact Me</h2>
           <form className="contact-form" onSubmit={handleSubmit}>
@@ -53,6 +68,7 @@ export default function Contact() {
                 id="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                onBlur={() => handleBlur('name')}
               />
               {errors.name && <span className="error">{errors.name}</span>}
             </div>
@@ -63,6 +79,7 @@ export default function Contact() {
                 id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                onBlur={() => handleBlur('email')}
               />
               {errors.email && <span className="error">{errors.email}</span>}
             </div>
@@ -72,11 +89,12 @@ export default function Contact() {
                 id="message"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
+                onBlur={() => handleBlur('message')}
               ></textarea>
               {errors.message && <span className="error">{errors.message}</span>}
             </div>
             <button type="submit">Submit</button>
-            </form>
+          </form>
         </section>
-        )
+      )
     }

@@ -1,0 +1,30 @@
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  /* Navigation styling */
+  nav {
+    margin-top: 10px;
+  }
+  
+  /* Navigation links styling */
+  nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  
+  /* Active link styling */
+  nav a.active {
+    font-weight: bold;
+    border-bottom: 2px solid #007bff;
+  }
+  
+  /* Hover effect for links */
+  nav a:hover {
+    color: #007bff;
+  }

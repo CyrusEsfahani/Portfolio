@@ -1,30 +1,48 @@
 header {
     background-color: #333;
-    color: white;
-    padding: 20px;
-    text-align: center;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Responsive header */
+@media (max-width: 768px) {
+  header {
+    padding: 10px;
   }
-  
-  /* Navigation styling */
-  nav {
-    margin-top: 10px;
-  }
-  
-  /* Navigation links styling */
+}
+
+/* Navigation styling */
+nav {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Navigation links styling */
+nav a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+/* Active link styling */
+nav a.active {
+  font-weight: bold;
+  border-bottom: 2px solid #007bff;
+}
+
+/* Hover effect for links */
+nav a:hover {
+  color: #007bff;
+}
+
+/* Responsive navigation */
+@media (max-width: 768px) {
   nav a {
-    color: white;
-    margin: 0 15px;
-    text-decoration: none;
-    font-size: 18px;
+    margin: 5px 10px;
+    font-size: 16px;
   }
-  
-  /* Active link styling */
-  nav a.active {
-    font-weight: bold;
-    border-bottom: 2px solid #007bff;
-  }
-  
-  /* Hover effect for links */
-  nav a:hover {
-    color: #007bff;
-  }
+}

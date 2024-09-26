@@ -76,7 +76,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 If you have any questions or would like to get in touch, feel free to contact me:
 
-- **Email**: your.email@example.com
+- **Email**: esfahani.cyrus@gmail.com
 - **LinkedIn**: [Cyrus Esfahani](https://www.linkedin.com/in/cyrus-esfahani-261013225/)
 - **GitHub**: [CyrusEsfahani](https://github.com/CyrusEsfahani)
 

@@ -1,12 +1,17 @@
 import React from 'react'
+import '../styles/aboutme.css'
 
 const AboutMe = () => {
   return (
     <section id="about">
       <h2>About Me</h2>
-      <p>
-        Hi, I'm Cyrus! I'm a software engineer with a passion for web development. I'm experienced in JavaScript, React, and Node.js, and I'm always looking to learn more. I'm currently seeking new opportunities, so feel free to reach out!
-      </p>
+      <div className="about-me-content">
+        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Profile" className="profile-picture" />
+        <p>Hello, I am Cyrus Esfahani.</p>
+        <p>I am a Full Stack Developer.</p>
+        <p>I love coding and solving problems.</p>
+        <p>Welcome to my portfolio!</p>
+      </div>
     </section>
   )
 }

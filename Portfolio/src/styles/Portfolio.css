@@ -2,4 +2,41 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    background-color: #03A9F4;
+    padding: 50px 20px;
+    animation: fadeIn 2s ease-in-out;
+  }
+  
+  .project {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    background-color: white;
+    transition: transform 0.3s;
+  }
+  
+  .project:hover {
+    transform: scale(1.05);
+  }
+  
+  .project-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .project-links {
+    margin-top: 10px;
+  }
+  
+  .project-links a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #FF5722;
+  }
+  
+  .project-links a:hover {
+    text-decoration: underline;
   }

@@ -1,35 +1,27 @@
-/* Container for the footer */
 footer {
-    background-color: #333;
-    color: white;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  /* Responsive footer */
-  @media (max-width: 768px) {
-    footer {
-      padding: 10px;
-    }
-  }
-  
-  /* Footer links styling */
-  footer a {
-    color: white;
-    margin: 0 15px;
-    text-decoration: none;
-    font-size: 18px;
-  }
-  
-  /* Hover effect for footer links */
-  footer a:hover {
-    color: #007bff;
-  }
-  
-  /* Responsive footer links */
-  @media (max-width: 768px) {
-    footer a {
-      margin: 5px 10px;
-      font-size: 16px;
-    }
-  }
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  animation: fadeIn 2s ease-in-out;
+}
+
+.social-icons {
+  margin-top: 10px;
+}
+
+.social-icons a {
+  margin: 0 15px;
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: #FF5722;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

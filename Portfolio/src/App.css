@@ -71,3 +71,15 @@ section {
     margin-bottom: 20px;
   }
 }
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  padding: 100px 0;
+  text-align: center;
+}
+
+#about, #portfolio, #resume, #contact {
+  min-height: 100vh;
+}

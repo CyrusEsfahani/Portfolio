@@ -1,6 +1,6 @@
 import React from 'react'
 import Navigation from './Navigation'
-import '../styles/Header.css'
+import '../styles/header.css'
 
 const Header = ({children}) => {
   return (

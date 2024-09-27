@@ -4,12 +4,12 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { StrictMode } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-import App from './App';
-import Error from './components/Error';
-import Resume from './components/Resume';
-import Contact from './components/Contact';
-import About from './components/AboutMe';
-import Portfolio from './components/Portfolio';
+import App from './App.jsx';
+import Error from './components/Error.jsx';
+import Resume from './components/Resume.jsx';
+import Contact from './components/Contact.jsx';
+import About from './components/AboutMe.jsx';
+import Portfolio from './components/Portfolio.jsx';
 import Footer from './components/Footer.jsx';
 
 const router = createBrowserRouter([

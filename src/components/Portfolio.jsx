@@ -1,8 +1,5 @@
 import React from 'react'
 import Project from './Project'
-import '../styles/Portfolio.css'
-
-
 
 const projects = [
   {
@@ -17,25 +14,19 @@ const projects = [
     deployedLink: 'https://github.com/CyrusEsfahani/Generate-Your-ReadMe',
     githubLink: 'https://github.com/CyrusEsfahani/Generate-Your-ReadMe',
   },
-    {
-        image: '/path/to/project3-image.jpg',
-        title: 'Employee Tracker',
-        deployedLink: 'https://github.com/CyrusEsfahani/employee-tracker',
-        githubLink: 'https://github.com/CyrusEsfahani/employee-tracker',
-    },
-    {
-        image: '/path/to/project4-image.jpg',
-        title: 'Weather App',
-        deployedLink: 'https://github.com/CyrusEsfahani/Weather-app',
-        githubLink: 'https://github.com/CyrusEsfahani/Weather-app',
-    }
-];
+  {
+    image: '/path/to/project3-image.jpg',
+    title: 'Employee Tracker',
+    deployedLink: 'https://github.com/CyrusEsfahani/Employee-Tracker',
+    githubLink: 'https://github.com/CyrusEsfahani/Employee-Tracker',
+  }
+]
 
 const Portfolio = () => {
   return (
-    <section id="portfolio">
-      <h2>Portfolio</h2>
-      <div className="projects">
+    <section id="portfolio" className="bg-gray-900 text-white py-20">
+      <h2 className="text-4xl font-bold text-center mb-10">Portfolio</h2>
+      <div className="max-w-4xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project, index) => (
           <Project
             key={index}

@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import '../styles/contact.css';
+import React, { useState } from 'react'
 
-export default function Contact() {
+const Contact = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
@@ -56,43 +55,48 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact">
-      <h2>Contact Me</h2>
-      <form className="contact-form" onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Name:</label>
+    <section id="contact" className="bg-gray-900 text-white py-20">
+      <h2 className="text-4xl font-bold text-center mb-10">Contact Me</h2>
+      <form className="max-w-4xl mx-auto px-4 bg-gray-800 p-6 rounded-lg shadow-lg" onSubmit={handleSubmit}>
+        <div className="mb-4">
+          <label htmlFor="name" className="block text-sm font-medium mb-2">Name:</label>
           <input
             type="text"
             id="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             onBlur={() => handleBlur('name')}
+            className="w-full p-2 border border-gray-600 rounded-lg bg-gray-700 text-white"
           />
-          {errors.name && <span className="error">{errors.name}</span>}
+          {errors.name && <span className="text-red-500 text-sm">{errors.name}</span>}
         </div>
-        <div>
-          <label htmlFor="email">Email:</label>
+        <div className="mb-4">
+          <label htmlFor="email" className="block text-sm font-medium mb-2">Email:</label>
           <input
             type="email"
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             onBlur={() => handleBlur('email')}
+            className="w-full p-2 border border-gray-600 rounded-lg bg-gray-700 text-white"
           />
-          {errors.email && <span className="error">{errors.email}</span>}
+          {errors.email && <span className="text-red-500 text-sm">{errors.email}</span>}
         </div>
-        <div>
-          <label htmlFor="message">Message:</label>
+        <div className="mb-4">
+          <label htmlFor="message" className="block text-sm font-medium mb-2">Message:</label>
           <textarea
             id="message"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             onBlur={() => handleBlur('message')}
+            className="w-full p-2 border border-gray-600 rounded-lg bg-gray-700 text-white"
           ></textarea>
-          {errors.message && <span className="error">{errors.message}</span>}
+          {errors.message && <span className="text-red-500 text-sm">{errors.message}</span>}
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">Submit</button>
       </form>
     </section>
   )
 }
+
+export default Contact

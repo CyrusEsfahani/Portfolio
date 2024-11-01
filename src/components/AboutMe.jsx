@@ -1,19 +1,18 @@
 import React from 'react'
-import '../styles/aboutme.css'
 
 const AboutMe = () => {
   return (
-    <section id="about">
-      <h2>About Me</h2>
-      <div className="about-me-content">
-        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Profile" className="profile-picture" />
-        <p>Hello, I am Cyrus Esfahani.</p>
-        <p>I am a Full Stack Developer.</p>
-        <p>I love coding and solving problems.</p>
-        <p>Welcome to my portfolio!</p>
+    <section id="about" className="bg-gray-900 text-white py-20">
+      <h2 className="text-4xl font-bold text-center mb-10">About Me</h2>
+      <div className="max-w-4xl mx-auto px-4 text-center">
+        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Profile" className="w-40 h-40 rounded-full mx-auto mb-6 shadow-lg" />
+        <p className="text-xl mb-4">Hello, I am Cyrus Esfahani.</p>
+        <p className="text-xl mb-4">I am a Full Stack Developer.</p>
+        <p className="text-xl mb-4">I love coding and solving problems.</p>
+        <p className="text-xl">Welcome to my portfolio!</p>
       </div>
     </section>
   )
 }
 
-export default AboutMe;
+export default AboutMe

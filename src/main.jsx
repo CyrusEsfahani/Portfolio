@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { StrictMode } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
+import "./index.css";
 
 import App from './App.jsx';
 import Error from './components/Error.jsx';
@@ -11,6 +12,7 @@ import Contact from './components/Contact.jsx';
 import About from './components/AboutMe.jsx';
 import Portfolio from './components/Portfolio.jsx';
 import Footer from './components/Footer.jsx';
+
 
 const router = createBrowserRouter([
   {

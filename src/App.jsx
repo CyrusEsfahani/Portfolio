@@ -10,6 +10,7 @@ import { Parallax } from 'react-parallax'
 import './App.css'
 
 
+
 function App() {
 return (
 <div>

@@ -7,7 +7,6 @@ import Portfolio from './components/Portfolio.jsx'
 import Resume from './components/Resume.jsx'
 import AboutMe from './components/AboutMe.jsx'
 import { Parallax } from 'react-parallax'
-import tailwind from './tailwind.css'
 import './App.css'
 
 

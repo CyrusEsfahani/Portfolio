@@ -1,14 +1,15 @@
 import React from 'react'
 import Navigation from './Navigation'
-import '../styles/header.css'
 
-const Header = ({children}) => {
+const Header = () => {
   return (
-    <header>
-      <h1>Cyrus Esfahani</h1>
-      {children}
+    <header className="bg-gray-900 text-white py-4">
+      <div className="container mx-auto flex justify-between items-center">
+        <h1 className="text-3xl font-bold">Cyrus Esfahani</h1>
+        <Navigation />
+      </div>
     </header>
   )
 }
 
-export default Header;
+export default Header

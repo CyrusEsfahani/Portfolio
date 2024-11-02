@@ -24,9 +24,9 @@ const projects = [
 
 const Portfolio = () => {
   return (
-    <section id="portfolio" className="bg-gray-900 text-white py-20">
+    <section className="bg-gray-900 text-white py-20 px-4">
       <h2 className="text-4xl font-bold text-center mb-10">Portfolio</h2>
-      <div className="max-w-4xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project, index) => (
           <Project
             key={index}

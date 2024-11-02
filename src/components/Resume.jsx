@@ -2,9 +2,9 @@ import React from 'react'
 
 const Resume = () => {
   return (
-    <section id="resume" className="bg-gray-900 text-white py-20">
+    <section className="bg-gray-900 text-white py-20 px-4">
       <h2 className="text-4xl font-bold text-center mb-10">Resume</h2>
-      <div className="max-w-4xl mx-auto px-4">
+      <div className="max-w-4xl mx-auto">
         <div className="bg-gray-800 p-6 rounded-lg shadow-lg mb-8">
           <h3 className="text-2xl font-semibold mb-2">Education</h3>
           <p>University of XYZ, Bachelor of Science in Computer Science, 2020</p>

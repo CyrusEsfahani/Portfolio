@@ -13,7 +13,7 @@ import './App.css'
 
 function App() {
 return (
-<div>
+<div className="app">
       <Header />
       <main>
         <Parallax bgImage="/path/to/about-bg.jpg" strength={500}>

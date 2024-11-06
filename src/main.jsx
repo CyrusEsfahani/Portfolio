@@ -7,7 +7,7 @@ import App from './App.jsx';
 import Error from './components/Error.jsx';
 
 import Contact from './components/Contact.jsx';
-import Home from './components/AboutMe.jsx';
+import Home from './components/Home.jsx';
 
 
 

@@ -1,102 +1,158 @@
-import React, { useState } from 'react'
+import { useState } from "react";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import Grid from "@mui/material/Unstable_Grid2";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
-const Contact = () => {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [message, setMessage] = useState('')
-  const [errors, setErrors] = useState({ name: '', email: '', message: '' })
+export default function Contact() {
+  const [formState, setFormState] = useState({
+    yourName: "",
+    company: "",
+    email: "",
+    message: "",
+  });
 
-  const validateEmail = (email) => {
-    return /\S+@\S+\.\S+/.test(email)
-  }
+  const [userMessage, setUserMessage] = useState("");
+  const [valid, setValid] = useState(true);
 
-  const handleBlur = (field) => {
-    let newErrors = { ...errors }
-    if (field === 'name' && !name) {
-      newErrors.name = 'Name is required'
-    } else if (field === 'email') {
-      if (!email) {
-        newErrors.email = 'Email is required'
-      } else if (!validateEmail(email)) {
-        newErrors.email = 'Valid email is required'
-      }
-    } else if (field === 'message' && !message) {
-      newErrors.message = 'Message is required'
-    }
-    setErrors(newErrors)
-  }
+  const handleChange = (e) => {
+    setFormState({
+      ...formState,
+      [e.target.name]: e.target.value,
+    });
+  };
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    let valid = true
-    let newErrors = { name: '', email: '', message: '' }
-
-    if (!name) {
-      newErrors.name = 'Name is required'
-      valid = false
-    }
-    if (!email) {
-      newErrors.email = 'Email is required'
-      valid = false
-    } else if (!validateEmail(email)) {
-      newErrors.email = 'Valid email is required'
-      valid = false
-    }
-    if (!message) {
-      newErrors.message = 'Message is required'
-      valid = false
-    }
-
-    setErrors(newErrors)
-    if (valid) {
-      // Handle form submission (e.g., show a success message)
-      alert('Form submitted successfully!')
-    }
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setUserMessage("Your message has been sent!");
+    setFormState({
+      yourName: "",
+      company: "",
+      email: "",
+      message: "",
+    });
+    setTimeout(() => {
+      setUserMessage("");
+    }, 3000);
+  };
 
   return (
-    <section className="bg-gray-900 text-white py-20 px-4">
-      <h2 className="text-4xl font-bold text-center mb-10">Contact Me</h2>
-      <form className="max-w-4xl mx-auto bg-gray-800 p-6 rounded-lg shadow-lg" onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <label htmlFor="name" className="block text-sm font-medium mb-2">Name:</label>
-          <input
-            type="text"
-            id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            onBlur={() => handleBlur('name')}
-            className="w-full p-2 border border-gray-600 rounded-lg bg-gray-700 text-white"
-          />
-          {errors.name && <span className="text-red-500 text-sm">{errors.name}</span>}
-        </div>
-        <div className="mb-4">
-          <label htmlFor="email" className="block text-sm font-medium mb-2">Email:</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            onBlur={() => handleBlur('email')}
-            className="w-full p-2 border border-gray-600 rounded-lg bg-gray-700 text-white"
-          />
-          {errors.email && <span className="text-red-500 text-sm">{errors.email}</span>}
-        </div>
-        <div className="mb-4">
-          <label htmlFor="message" className="block text-sm font-medium mb-2">Message:</label>
-          <textarea
-            id="message"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            onBlur={() => handleBlur('message')}
-            className="w-full p-2 border border-gray-600 rounded-lg bg-gray-700 text-white"
-          ></textarea>
-          {errors.message && <span className="text-red-500 text-sm">{errors.message}</span>}
-        </div>
-        <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">Submit</button>
-      </form>
-    </section>
-  )
+    <Box
+    //example of using a style object, able to use this in any react component.
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        paddingTop: "50px",
+        paddingBottom: 10,
+        height: "100vh",
+        width: "100%",
+      }}
+    >
+      <Box
+          //example of using a sx object, able to use this in any MUI component.
+        sx={{
+          backgroundColor: "white",
+          padding: 5,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          borderRadius: 2,
+          boxShadow: 10,
+          // example of media queries inside the sx prop:
+          width: { xs: "100%", sm: "80%", md: "70%", lg: "60%" },
+        }}
+      >
+        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}></Avatar>
+        <Typography component="h1" variant="h5" sx={{ color: "black" }}>
+          I&apos;d love to hear from you!
+        </Typography>
+        <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Grid container spacing={2}>
+            <Grid xs={12}>
+              <TextField
+                autoComplete="given-name"
+                name="yourName"
+                value={formState.yourName}
+                onChange={handleChange}
+                required
+                fullWidth
+                id="yourName"
+                label="Your Name"
+                autoFocus
+              />
+            </Grid>
+            <Grid xs={12}>
+              <TextField
+                fullWidth
+                id="company"
+                label="Company (optional)"
+                name="company"
+                value={formState.company}
+                onChange={handleChange}
+                autoComplete="company"
+              />
+            </Grid>
+            <Grid xs={12}>
+              <TextField
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                value={formState.email}
+                onChange={handleChange}
+                autoComplete="email"
+              />
+            </Grid>
+            <Grid xs={12}>
+              <TextField
+                required
+                fullWidth
+                name="message"
+                value={formState.message}
+                onChange={handleChange}
+                label="Your Message"
+                type="text"
+                multiline
+                minRows={4}
+              />
+            </Grid>
+          </Grid>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{
+              mt: 3,
+              mb: 2,
+              backgroundColor: "#010041",
+              // example of using pseudo classes inside the sx prop:
+              "&:hover": { backgroundColor: "green" },
+            }}
+          >
+            Submit
+          </Button>
+        </Box>
+        {userMessage && (
+          <Typography
+          // example of conditional styles using sx prop:
+            sx={{
+              color: "green",  // default text color
+              ...(!valid && {
+                color: "red",  // color is red if form is not valid
+              }),
+            }}
+          >
+            {userMessage}
+          </Typography>
+        )}
+      </Box>
+    </Box>
+  );
 }
-
-export default Contact
+                  

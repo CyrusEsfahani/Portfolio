@@ -2,7 +2,7 @@ import { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import Grid from "@mui/material/Unstable_Grid2";
+import Grid from "@mui/material/Grid2"
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
@@ -73,7 +73,7 @@ export default function Contact() {
         </Typography>
         <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
           <Grid container spacing={2}>
-            <Grid xs={12}>
+            <Grid size={12}>
               <TextField
                 autoComplete="given-name"
                 name="yourName"
@@ -86,7 +86,7 @@ export default function Contact() {
                 autoFocus
               />
             </Grid>
-            <Grid xs={12}>
+            <Grid size={12}>
               <TextField
                 fullWidth
                 id="company"
@@ -97,7 +97,7 @@ export default function Contact() {
                 autoComplete="company"
               />
             </Grid>
-            <Grid xs={12}>
+            <Grid size={12}>
               <TextField
                 required
                 fullWidth
@@ -109,7 +109,7 @@ export default function Contact() {
                 autoComplete="email"
               />
             </Grid>
-            <Grid xs={12}>
+            <Grid size={12}>
               <TextField
                 required
                 fullWidth

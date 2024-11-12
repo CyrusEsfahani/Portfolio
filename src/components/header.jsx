@@ -1,16 +1,27 @@
-import React from 'react'
+import React from "react";
+import Box from "@mui/material/Box";
+import Logos from '../assets/Logos/NameLogo.webp'
 
-
-
-const Header = ({children}) => {
+const Header = ({ children }) => {
   return (
-    <header className="bg-gray-900 text-white py-4">
-      <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-3xl font-bold">Cyrus Esfahani</h1>
-        {children}
-      </div>
-    </header>
-  )
-}
+    
+    <Box
+      component="header"
+      sx={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+      }}
+    >
+      <Box component="h1" sx={{ fontWeight: "bold" }}>
+        <Box>
+          <img src={Logos} alt= 'page logo' style= {{ height: '40px', width: '30px'}}/>
+        Cyrus Esfahani
+        </Box>
+      </Box>
+      {children}
+    </Box>
+  );
+};
 
-export default Header
+export default Header;

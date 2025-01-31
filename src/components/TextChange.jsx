@@ -1,55 +1,87 @@
 import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
 const TextChange = () => {
-  const texts = ["Hello!", "Welcome to my portfolio!"];
-
-  const [currentText, setCurrentText] = useState(["", ""]);
-  const [endValue, setEndValue] = useState(0);
-  const [currentIndex, setCurrentIndex] = useState(0); // Tracks which text is typing
-  const [isTyping, setIsTyping] = useState(true); // Flag to prevent clearing mid-typing
+  const texts = ["Greetings!", "Welcome To My Portfolio!"]; // Texts to display
+  const [currentText, setCurrentText] = useState(""); // Current displayed text
+  const [currentIndex, setCurrentIndex] = useState(0); // Index of the current text
+  const [isTyping, setIsTyping] = useState(true); // Typing or deleting phase
+  const [showCursor, setShowCursor] = useState(true); // Controls cursor visibility
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
+    const typingSpeed = 100; // Speed of typing (in milliseconds)
+    const deletingSpeed = 50; // Speed of deleting (in milliseconds)
+    const pauseBetweenTexts = 1000; // Pause before starting the next text (in milliseconds)
+    const cursorBlinkSpeed = 500; // Speed of cursor blink (in milliseconds)
+
+    // Blinking cursor effect
+    const cursorIntervalId = setInterval(() => {
+      setShowCursor((prev) => !prev);
+    }, cursorBlinkSpeed);
+
+    // Typing and deleting logic
+    const timeoutId = setTimeout(() => {
       if (isTyping) {
-        // Handle typing logic based on the current index
-        if (currentIndex === 0) {
-          // First text typing
-          setCurrentText([texts[0].substring(0, endValue), ""]);
-        } else if (currentIndex === 1) {
-          // Second text typing
-          setCurrentText([texts[0], texts[1].substring(0, endValue)]);
+        // Typing phase
+        if (currentText.length < texts[currentIndex].length) {
+          setCurrentText((prev) => prev + texts[currentIndex][prev.length]);
+        } else {
+          // Switch to deleting phase after a short pause
+          setTimeout(() => setIsTyping(false), pauseBetweenTexts);
         }
-
-        setEndValue((prev) => prev + 1); // Increment typing
-      }
-
-      // If the typing reaches the end of the current text
-      if (endValue >= texts[currentIndex].length) {
-        if (currentIndex === 0) {
-          // Finished first text, move to second text
-          setEndValue(0);
-          setCurrentIndex(1);
-        } else if (currentIndex === 1) {
-          // Finished second text, reset everything
-          setIsTyping(false);
-          setTimeout(() => {
-            setCurrentText(["", ""]); // Clear both lines after delay
-            setEndValue(0); // Reset typing index
-            setCurrentIndex(0); // Start typing the first line again
-            setIsTyping(true); // Allow typing to restart
-          }, 2000); // Delay before restarting
+      } else {
+        // Deleting phase
+        if (currentText.length > 0) {
+          setCurrentText((prev) => prev.slice(0, -1));
+        } else {
+          // Switch to the next text and start typing again
+          setCurrentIndex((prev) => (prev + 1) % texts.length);
+          setIsTyping(true);
         }
       }
-    }, 100); // Typing speed
+    }, isTyping ? typingSpeed : deletingSpeed);
 
-    return () => clearInterval(intervalId); // Cleanup the interval on component unmount
-  }, [endValue, currentIndex, isTyping, texts]);
+    // Cleanup intervals and timeouts
+    return () => {
+      clearTimeout(timeoutId);
+      clearInterval(cursorIntervalId);
+    };
+  }, [currentText, currentIndex, isTyping, texts]);
 
   return (
-    <Box>
-      <Box>{currentText[0]}</Box>
-      <Box>{currentText[1]}</Box>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "flex-start", // Align text to the left
+        justifyContent: "center",
+        textAlign: "left",
+        mt: 2,
+      }}
+    >
+      <Typography
+        variant="h5" // Smaller font size
+        sx={{
+          fontFamily: "'Inter', sans-serif",
+          fontWeight: 400, // Lighter font weight
+          color: "white", // White text color
+          fontSize: { xs: "1.25rem", sm: "1.5rem", md: "1.75rem" }, // Responsive font size
+          position: "relative",
+          "&::after": {
+            content: '""',
+            position: "absolute",
+            right: "-8px",
+            width: "2px",
+            height: "100%",
+            backgroundColor: "white", // White cursor color
+            opacity: showCursor ? 1 : 0, // Blinking effect
+            transition: "opacity 0.3s ease",
+          },
+        }}
+      >
+        {currentText}
+      </Typography>
     </Box>
   );
 };

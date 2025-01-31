@@ -1,12 +1,12 @@
-import React from 'react'
-import Project from './Project'
+import React from 'react';
+import Project from './Project';
 
 const projects = [
   {
-    image: '/path/to/project1-image.jpg',
+    image: '/7-wonders.jpg',
     title: '7 Wonders of the World',
     deployedLink: 'https://dolaes.github.io/Interactive-7-Wonders/',
-    githubLink: 'https://github.com/CyrusEsfahani/7-wonders-of-the-world'
+    githubLink: 'https://github.com/CyrusEsfahani/7-wonders-of-the-world',
   },
   {
     image: '/path/to/project2-image.jpg',
@@ -19,14 +19,16 @@ const projects = [
     title: 'Employee Tracker',
     deployedLink: 'https://github.com/CyrusEsfahani/Employee-Tracker',
     githubLink: 'https://github.com/CyrusEsfahani/Employee-Tracker',
-  }
-]
+  },
+];
 
 const Portfolio = () => {
   return (
-    <section className="bg-gray-900 text-white py-20 px-4">
-      <h2 className="text-4xl font-bold text-center mb-10">Portfolio</h2>
-      <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <section className="text-white py-20">
+      <h2 className="text-4xl font-bold text-center mb-10 pb-4 border-b border-gray-700">
+        Projects
+      </h2>
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project, index) => (
           <Project
             key={index}
@@ -38,7 +40,7 @@ const Portfolio = () => {
         ))}
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Portfolio
+export default Portfolio;

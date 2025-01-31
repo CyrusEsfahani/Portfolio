@@ -8,6 +8,7 @@ import Error from './components/Error.jsx';
 
 import Contact from './components/Contact.jsx';
 import Home from './components/Home.jsx';
+import Portfolio from './components/Portfolio.jsx';
 
 
 
@@ -25,6 +26,11 @@ const router = createBrowserRouter([
         path: '/contact',
         element: <Contact />,
       },
+      {
+        path: '/projects',
+        element: <Portfolio />,
+      }
+    
     ],
   },
 ]);

@@ -8,87 +8,108 @@ import { Link as ScrollLink } from "react-scroll";
 import Drawer from "@mui/material/Drawer";
 import MenuIcon from "@mui/icons-material/Menu";
 import * as Scroll from "react-scroll";
+import { List, ListItem, ListItemIcon, ListItemText } from "@mui/material";
+import WorkIcon from "@mui/icons-material/Work"; // Icon for Portfolio
+import ContactMailIcon from "@mui/icons-material/ContactMail"; // Icon for Contact
+import BuildIcon from "@mui/icons-material/Build"; // Icon for Projects
 import Button from "@mui/material/Button";
 
 export default function Navigation() {
   const path = useLocation().pathname;
-  const location = path.split("/")[1];
   const navigate = useNavigate();
   const scroller = Scroll.scroller;
 
-  const goToPageAndScroll = async (selector) => {
-    await navigate("/");
-    scroller.scrollTo(selector, {
+  const [open, setOpen] = React.useState(false);
+
+  // Function to navigate to Home and scroll to Portfolio
+  const handlePortfolioClick = async () => {
+    if (path !== "/") {
+      // Navigate to home first
+      await navigate("/");
+    }
+    // After navigation, scroll to the Portfolio section
+    scroller.scrollTo("portfolio", {
       duration: 500,
       smooth: true,
       offset: -75,
       spy: true,
     });
-    setOpen(false);
+    setOpen(false); // Close the menu
   };
-
-  const [open, setOpen] = React.useState(false);
 
   return (
     <div>
-      <MenuIcon sx={{ color: "white" }} onClick={() => setOpen(true)} />
+      {/* Hamburger Menu Icon */}
+      <MenuIcon onClick={() => setOpen(true)} sx={{ color: "white" }} />
       <Drawer
         open={open}
         anchor={"right"}
         onClose={() => setOpen(false)}
         sx={{
           "& .MuiDrawer-paper": {
-            width: "30%",
+            width: "20%",
             backgroundColor: "white",
             padding: "1.5rem",
             overflow: "hidden",
+            color: "black",
           },
         }}
       >
-        <ul>
-          {location !== "contact" ? (
-            // add all the buttons to navigate when on the contact page
-            <>
-              <li>
-                <Button color="white">
-                  <ScrollLink
-                    to="portfolio"
-                    spy={true}
-                    smooth={true}
-                    offset={-75}
-                    duration={500}
-                    onClick={() => setOpen(false)}
-                  >
-                    Portfolio
-                  </ScrollLink>
-                </Button>
-              </li>
-              <li>
-                <Button color="white">
-                  <RouterLink
-                    to="/contact"
-                    style={{ textDecoration: "none", color: "black" }}
-                  >
-                    Contact
-                  </RouterLink>
-                </Button>
-              </li>
-            </>
-          ) : (
-            // add all the buttons to navigate when on the contact page
-            <li>
-              <Button
-                color="white"
-                onClick={() => goToPageAndScroll("portfolio")}
-              >
-                Portfolio
-              </Button>
-            </li>
-          )}
-        </ul>
+        {/* Drawer Header */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: "1rem",
+          }}
+        >
+          <h3>Menu</h3>
+        </div>
+
+        {/* Navigation Items */}
+        <List>
+          {/* Portfolio Section - Now redirects to home and scrolls to Portfolio */}
+          <ListItem button onClick={handlePortfolioClick}>
+            <ListItemIcon>
+              <WorkIcon sx={{ color: "black" }} />
+            </ListItemIcon>
+            <ListItemText primary="Portfolio" />
+          </ListItem>
+
+          {/* Projects Section */}
+          <ListItem button>
+            <ListItemIcon>
+              <BuildIcon sx={{ color: "black" }} />
+            </ListItemIcon>
+            <RouterLink
+              to="/projects"
+              style={{ textDecoration: "none", color: "black" }}
+              onClick={() => setOpen(false)}
+            >
+              <ListItemText primary="Projects" />
+            </RouterLink>
+          </ListItem>
+
+          {/* Contact Section */}
+          <ListItem button>
+            <ListItemIcon>
+              <ContactMailIcon sx={{ color: "black" }} />
+            </ListItemIcon>
+            <RouterLink
+              to="/contact"
+              style={{ textDecoration: "none", color: "black" }}
+              onClick={() => setOpen(false)}
+            >
+              <ListItemText primary="Contact" />
+            </RouterLink>
+          </ListItem>
+        </List>
       </Drawer>
     </div>
   );
 }
+
+
 
 

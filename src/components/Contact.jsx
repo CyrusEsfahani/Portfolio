@@ -1,21 +1,20 @@
-import { useState } from "react";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
+import React, { useState, useRef } from "react";
 import TextField from "@mui/material/TextField";
-import Grid from "@mui/material/Grid2"
+import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
+import emailjs from "@emailjs/browser";
 
 export default function Contact() {
   const [formState, setFormState] = useState({
     yourName: "",
-    company: "",
     email: "",
     message: "",
   });
 
   const [userMessage, setUserMessage] = useState("");
-  const [valid, setValid] = useState(true);
+  const form = useRef();
 
   const handleChange = (e) => {
     setFormState({
@@ -24,128 +23,168 @@ export default function Contact() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const sendEmail = (e) => {
     e.preventDefault();
-    setUserMessage("Your message has been sent!");
-    setFormState({
-      yourName: "",
-      company: "",
-      email: "",
-      message: "",
-    });
-    setTimeout(() => {
-      setUserMessage("");
-    }, 3000);
+
+    emailjs
+      .sendForm(
+        "service_jzmq1jl",
+        "template_7mxlo8d",
+        form.current,
+        "zLknAdr3wZXXK8V0z"
+      )
+      .then(() => {
+        setUserMessage("Thank you! Your message has been sent.");
+        setFormState({ yourName: "", email: "", message: "" });
+      })
+      .catch(() => {
+        setUserMessage("Something went wrong. Please try again.");
+      });
   };
 
   return (
     <Box
-    //example of using a style object, able to use this in any react component.
-      style={{
+      sx={{
         display: "flex",
         flexDirection: "column",
-        justifyContent: "center",
         alignItems: "center",
-        paddingTop: "50px",
-        paddingBottom: 10,
-        height: "100vh",
-        width: "100%",
+        justifyContent: "center",
+        minHeight: "100vh",
+        padding: "20px",
+        backgroundColor: "#1a1a1a", // Dark background color
       }}
     >
-      <Box
-          //example of using a sx object, able to use this in any MUI component.
+      {/* Title */}
+      <Typography
+        variant="h4"
         sx={{
-          backgroundColor: "white",
-          padding: 5,
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          borderRadius: 2,
-          boxShadow: 10,
-          // example of media queries inside the sx prop:
-          width: { xs: "100%", sm: "80%", md: "70%", lg: "60%" },
+          color: "#ffffff",
+          fontWeight: "bold",
+          marginBottom: "10px",
+          textAlign: "center",
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}></Avatar>
-        <Typography component="h1" variant="h5" sx={{ color: "black" }}>
-          I&apos;d love to hear from you!
-        </Typography>
-        <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
-          <Grid container spacing={2}>
-            <Grid size={12}>
+        Let's achieve the impossible together 
+      </Typography>
+      <Typography
+        variant="body1"
+        sx={{
+          color: "#aaaaaa",
+          marginBottom: "30px",
+          textAlign: "center",
+        }}
+      >
+       If you need help or have some questions, I'll be there ready and happy to help.
+
+      </Typography>
+
+      {/* Form Card */}
+      <Box
+        sx={{
+          width: { xs: "90%", sm: "75%", md: "50%" },
+          backgroundColor: "#2a2a2a", // Dark gray card background
+          padding: "30px",
+          borderRadius: "10px",
+          boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.3)",
+        }}
+      >
+        <Box component="form" ref={form} onSubmit={sendEmail}>
+          <Grid container spacing={3}>
+            {/* Name Field */}
+            <Grid item xs={12}>
               <TextField
-                autoComplete="given-name"
                 name="yourName"
+                label="Your Name"
                 value={formState.yourName}
                 onChange={handleChange}
-                required
                 fullWidth
-                id="yourName"
-                label="Your Name"
-                autoFocus
+                required
+                InputProps={{
+                  style: {
+                    backgroundColor: "#333333",
+                    color: "#ffffff",
+                    borderRadius: "5px",
+                  },
+                }}
+                InputLabelProps={{
+                  style: { color: "#aaaaaa" },
+                }}
               />
             </Grid>
-            <Grid size={12}>
+            {/* Email Field */}
+            <Grid item xs={12}>
               <TextField
-                fullWidth
-                id="company"
-                label="Company (optional)"
-                name="company"
-                value={formState.company}
-                onChange={handleChange}
-                autoComplete="company"
-              />
-            </Grid>
-            <Grid size={12}>
-              <TextField
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
                 name="email"
+                label="Email Address"
                 value={formState.email}
                 onChange={handleChange}
-                autoComplete="email"
+                fullWidth
+                required
+                InputProps={{
+                  style: {
+                    backgroundColor: "#333333",
+                    color: "#ffffff",
+                    borderRadius: "5px",
+                  },
+                }}
+                InputLabelProps={{
+                  style: { color: "#aaaaaa" },
+                }}
               />
             </Grid>
-            <Grid size={12}>
+            {/* Message Field */}
+            <Grid item xs={12}>
               <TextField
-                required
-                fullWidth
                 name="message"
+                label="Message"
                 value={formState.message}
                 onChange={handleChange}
-                label="Your Message"
-                type="text"
+                fullWidth
+                required
                 multiline
-                minRows={4}
+                rows={4}
+                InputProps={{
+                  style: {
+                    backgroundColor: "#333333",
+                    color: "#ffffff",
+                    borderRadius: "5px",
+                  },
+                }}
+                InputLabelProps={{
+                  style: { color: "#aaaaaa" },
+                }}
               />
             </Grid>
           </Grid>
+
+          {/* Submit Button */}
           <Button
             type="submit"
             fullWidth
             variant="contained"
             sx={{
-              mt: 3,
-              mb: 2,
-              backgroundColor: "#010041",
-              // example of using pseudo classes inside the sx prop:
-              "&:hover": { backgroundColor: "green" },
+              marginTop: "20px",
+              padding: "10px",
+              backgroundColor: "#1abc9c",
+              color: "#ffffff",
+              fontWeight: "bold",
+              "&:hover": {
+                backgroundColor: "#16a085",
+              },
             }}
           >
-            Submit
+            Send Message
           </Button>
         </Box>
+
+        {/* User Message */}
         {userMessage && (
           <Typography
-          // example of conditional styles using sx prop:
             sx={{
-              color: "green",  // default text color
-              ...(!valid && {
-                color: "red",  // color is red if form is not valid
-              }),
+              marginTop: "20px",
+              color: userMessage.includes("Thank you") ? "green" : "red",
+              textAlign: "center",
+              fontWeight: "bold",
             }}
           >
             {userMessage}
@@ -155,4 +194,6 @@ export default function Contact() {
     </Box>
   );
 }
+
+
                   

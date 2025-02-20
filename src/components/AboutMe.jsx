@@ -24,7 +24,7 @@ const AboutMe = () => {
           </Typography>
           <Box sx={{ maxWidth: "800px" }}>
             <Typography variant="body1" sx={{ mb: 3 }}>
-              Let's turn ideas into reality! Whether you're looking to build an innovative application or optimize an existing solution, I'm here to create, collaborate, and push boundaries. Explore my projects or reach out—I'm always excited about new opportunities to build something amazing.
+              Let's turn ideas into reality! Whether you're looking to build an innovative application or optimize an existing solution. I'm here to create, collaborate, and push boundaries. Explore my projects or reach out—I'm always excited about new opportunities to build something amazing.
             </Typography>
             <Typography variant="body1" sx={{ mb: 3 }}>
               With expertise in both frontend and backend development, I specialize in crafting dynamic, scalable, and high-performance web applications.

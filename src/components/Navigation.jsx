@@ -13,6 +13,8 @@ import WorkIcon from "@mui/icons-material/Work"; // Icon for Portfolio
 import ContactMailIcon from "@mui/icons-material/ContactMail"; // Icon for Contact
 import BuildIcon from "@mui/icons-material/Build"; // Icon for Projects
 import Button from "@mui/material/Button";
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 
 export default function Navigation() {
   const path = useLocation().pathname;
@@ -20,6 +22,9 @@ export default function Navigation() {
   const scroller = Scroll.scroller;
 
   const [open, setOpen] = React.useState(false);
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+
 
   // Function to navigate to Home and scroll to Portfolio
   const handlePortfolioClick = async () => {
@@ -40,28 +45,28 @@ export default function Navigation() {
   return (
     <div>
       {/* Hamburger Menu Icon */}
-      <MenuIcon onClick={() => setOpen(true)} sx={{ color: "white" }} />
+      <MenuIcon onClick={() => setOpen(true)} sx={{ color: 'white' }} />
       <Drawer
         open={open}
-        anchor={"right"}
+        anchor="right"
         onClose={() => setOpen(false)}
-        sx={{
-          "& .MuiDrawer-paper": {
-            width: "20%",
-            backgroundColor: "white",
-            padding: "1.5rem",
-            overflow: "hidden",
-            color: "black",
+        PaperProps={{
+          sx: {
+            width: isSmallScreen ? '75%' : '20%', // 75% width for small screens, 20% for larger screens
+            backgroundColor: 'white',
+            padding: '1.5rem',
+            overflow: 'hidden',
+            color: 'black',
           },
         }}
       >
         {/* Drawer Header */}
         <div
           style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginBottom: "1rem",
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: '1rem',
           }}
         >
           <h3>Menu</h3>

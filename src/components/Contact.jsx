@@ -165,11 +165,11 @@ export default function Contact() {
             sx={{
               marginTop: "20px",
               padding: "10px",
-              backgroundColor: "#1abc9c",
+              backgroundColor: "#0ea5e9",
               color: "#ffffff",
               fontWeight: "bold",
               "&:hover": {
-                backgroundColor: "#16a085",
+                backgroundColor: "#00e6f6",
               },
             }}
           >

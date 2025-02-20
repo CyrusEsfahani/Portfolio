@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
 const TextChange = () => {
-  const texts = ["Greetings!", "Welcome To My Portfolio!"]; // Texts to display
+  const texts = ["Greetings!", "Welcome To My Portfolio! "]; // Texts to display
   const [currentText, setCurrentText] = useState(""); // Current displayed text
   const [currentIndex, setCurrentIndex] = useState(0); // Index of the current text
   const [isTyping, setIsTyping] = useState(true); // Typing or deleting phase

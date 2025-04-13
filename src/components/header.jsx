@@ -1,10 +1,20 @@
+// Header.jsx
 import React from "react";
 import Box from "@mui/material/Box";
 import { useTheme } from "@mui/material/styles";
 import { Link } from "react-router-dom";
+import Typography from "@mui/material/Typography";
 
 const Header = ({ children }) => {
   const theme = useTheme();
+
+  // Gradient text style
+  const gradientStyle = {
+    background: 'linear-gradient(135deg, #00e6f6 30%, #9333ea 70%)',
+    WebkitBackgroundClip: 'text',
+    backgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+  };
 
   return (
     <Box
@@ -15,11 +25,12 @@ const Header = ({ children }) => {
         alignItems: "center",
         width: "100%",
         padding: "1rem 2rem",
-        backgroundColor: "transparent", // Transparent background for modern look
+        backgroundColor: "transparent", // Transparent to blend with page background
         position: "sticky",
         top: 0,
         zIndex: 1100,
         transition: "all 0.3s ease",
+        borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
       }}
     >
       <Box
@@ -28,7 +39,7 @@ const Header = ({ children }) => {
         sx={{
           display: "flex",
           alignItems: "center",
-          gap: "1rem",
+          gap: "0.75rem",
           textDecoration: "none",
           "&:hover": {
             "& #logo-c": {
@@ -61,21 +72,21 @@ const Header = ({ children }) => {
           C
         </Box>
 
-        <Box
+        {/* Full name with gradient */}
+        <Typography
+          variant="h6"
           component="h1"
-          className="name-text"
           sx={{
             fontWeight: 600,
-            fontSize: "1.5rem",
-            color: "rgba(255, 255, 255, 0.9)",
-            letterSpacing: "0.05em",
+            fontSize: "1.25rem",
             margin: 0,
             fontFamily: "'Inter', sans-serif",
             transition: "color 0.3s ease",
+            ...gradientStyle
           }}
         >
-          Esfahani
-        </Box>
+          Cyrus Esfahani
+        </Typography>
       </Box>
 
       <Box

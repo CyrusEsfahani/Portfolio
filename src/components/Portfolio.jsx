@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Project from './Project';
 import MoreProjects from './MoreProjects';
 
@@ -18,9 +19,8 @@ const Portfolio = () => {
   return (
     <section className="py-16 bg-gradient-to-b from-gray-900 to-black">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
-        {/* Added pb-24 (padding-bottom) to ensure space before footer */}
         {/* Header section with gradient text */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
             Projects
           </h2>
@@ -53,21 +53,23 @@ const Portfolio = () => {
         </div>
         
         {/* More Projects section */}
-        <div className="mt-16">
+        <div className="mt-12">
           <MoreProjects />
         </div>
         
         {/* Call-to-action section */}
-        <div className="mt-16 text-center">
+        <div className="mt-8 text-center">
           <p className="text-gray-300 mb-6">
             Interested in collaborating or want to see more of my work?
           </p>
-          <a 
-            href="#contact" 
+          
+          {/* Changed from <a href> to <Link to> for proper React Router navigation */}
+          <Link
+            to="/contact"
             className="inline-block px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 text-white rounded-lg hover:from-cyan-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-cyan-500/30 transform hover:-translate-y-1"
           >
             Get In Touch
-          </a>
+          </Link>
         </div>
       </div>
     </section>

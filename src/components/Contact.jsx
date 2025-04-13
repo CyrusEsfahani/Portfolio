@@ -22,12 +22,12 @@ export default function Contact() {
   const [formState, setFormState] = useState({
     yourName: "",
     email: "",
-    subject: "", // Added subject field
+    subject: "",
     message: "",
   });
 
   const [userMessage, setUserMessage] = useState("");
-  const [loading, setLoading] = useState(false); // Added loading state
+  const [loading, setLoading] = useState(false);
   const form = useRef();
 
   const handleChange = (e) => {
@@ -75,11 +75,13 @@ export default function Contact() {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        minHeight: "100vh",
+        minHeight: "calc(100vh - 60px)", // Adjusted to prevent overlap with footer
         padding: { xs: "20px", md: "60px" },
-        backgroundColor: "#0f0f14", // Darker background
+        paddingBottom: { xs: "80px", md: "100px" }, // Extra padding at bottom
+        backgroundColor: "#0f0f14",
         position: "relative",
         overflow: "hidden",
+        marginBottom: "-1px", // Eliminate gap between contact and footer
       }}
     >
       {/* Background effect */}
@@ -101,7 +103,7 @@ export default function Contact() {
       />
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
-        <Grid container spacing={6} justifyContent="center">
+        <Grid container spacing={{ xs: 3, md: 6 }} justifyContent="center">
           {/* Left column with info */}
           <Grid item xs={12} md={5}>
             <Typography
@@ -109,7 +111,7 @@ export default function Contact() {
               sx={{
                 marginBottom: "10px",
                 ...gradientText,
-                fontSize: { xs: "2.5rem", md: "3rem" }
+                fontSize: { xs: "2.2rem", md: "3rem" }
               }}
             >
               Get In Touch
@@ -118,7 +120,7 @@ export default function Contact() {
               variant="body1"
               sx={{
                 color: "rgba(255, 255, 255, 0.7)",
-                marginBottom: "30px",
+                marginBottom: "20px",
                 fontSize: "1.1rem",
                 lineHeight: 1.6,
               }}
@@ -127,11 +129,11 @@ export default function Contact() {
             </Typography>
 
             {/* Contact Info */}
-            <Box sx={{ mt: 6 }}>
+            <Box sx={{ mt: 3 }}>
               <Box sx={{ 
                 display: "flex", 
                 alignItems: "center", 
-                mb: 4,
+                mb: 2,
                 p: 2,
                 borderRadius: "12px",
                 background: "rgba(0, 230, 246, 0.05)",
@@ -143,7 +145,7 @@ export default function Contact() {
               }}>
                 <EmailIcon sx={{ 
                   color: "#00e6f6", 
-                  fontSize: 36, 
+                  fontSize: 32, 
                   mr: 2,
                   filter: "drop-shadow(0 0 8px rgba(0, 230, 246, 0.5))",
                 }} />
@@ -157,61 +159,79 @@ export default function Contact() {
                 </Box>
               </Box>
 
-              <Box sx={{ 
-                display: "flex", 
-                alignItems: "center", 
-                mb: 4,
-                p: 2,
-                borderRadius: "12px",
-                background: "rgba(147, 51, 234, 0.05)",
-                transition: "all 0.3s ease",
-                "&:hover": {
-                  background: "rgba(147, 51, 234, 0.1)",
-                  transform: "translateY(-3px)",
-                }
-              }}>
-                <LinkedInIcon sx={{ 
-                  color: "#9333ea", 
-                  fontSize: 36, 
-                  mr: 2,
-                  filter: "drop-shadow(0 0 8px rgba(147, 51, 234, 0.5))",
-                }} />
-                <Box>
-                  <Typography variant="subtitle1" sx={{ color: "white", fontWeight: 600 }}>
-                    LinkedIn
-                  </Typography>
-                  <Typography variant="body2" sx={{ color: "rgba(255, 255, 255, 0.7)" }}>
-                    Connect with me
-                  </Typography>
+              {/* LinkedIn with proper link */}
+              <a 
+                href="https://www.linkedin.com/in/cyrus-esfahani-261013225/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                style={{ textDecoration: 'none' }}
+              >
+                <Box sx={{ 
+                  display: "flex", 
+                  alignItems: "center", 
+                  mb: 2,
+                  p: 2,
+                  borderRadius: "12px",
+                  background: "rgba(147, 51, 234, 0.05)",
+                  transition: "all 0.3s ease",
+                  "&:hover": {
+                    background: "rgba(147, 51, 234, 0.1)",
+                    transform: "translateY(-3px)",
+                  },
+                  cursor: "pointer"
+                }}>
+                  <LinkedInIcon sx={{ 
+                    color: "#9333ea", 
+                    fontSize: 32, 
+                    mr: 2,
+                    filter: "drop-shadow(0 0 8px rgba(147, 51, 234, 0.5))",
+                  }} />
+                  <Box>
+                    <Typography variant="subtitle1" sx={{ color: "white", fontWeight: 600 }}>
+                      LinkedIn
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: "rgba(255, 255, 255, 0.7)" }}>
+                      Connect with me
+                    </Typography>
+                  </Box>
                 </Box>
-              </Box>
+              </a>
 
-              <Box sx={{ 
-                display: "flex", 
-                alignItems: "center",
-                p: 2,
-                borderRadius: "12px",
-                background: "rgba(255, 255, 255, 0.05)",
-                transition: "all 0.3s ease",
-                "&:hover": {
-                  background: "rgba(255, 255, 255, 0.1)",
-                  transform: "translateY(-3px)",
-                }
-              }}>
-                <GitHubIcon sx={{ 
-                  color: "#ffffff", 
-                  fontSize: 36, 
-                  mr: 2 
-                }} />
-                <Box>
-                  <Typography variant="subtitle1" sx={{ color: "white", fontWeight: 600 }}>
-                    GitHub
-                  </Typography>
-                  <Typography variant="body2" sx={{ color: "rgba(255, 255, 255, 0.7)" }}>
-                    View my projects
-                  </Typography>
+              {/* GitHub with proper link */}
+              <a 
+                href="https://github.com/CyrusEsfahani" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                style={{ textDecoration: 'none' }}
+              >
+                <Box sx={{ 
+                  display: "flex", 
+                  alignItems: "center",
+                  p: 2,
+                  borderRadius: "12px",
+                  background: "rgba(255, 255, 255, 0.05)",
+                  transition: "all 0.3s ease",
+                  "&:hover": {
+                    background: "rgba(255, 255, 255, 0.1)",
+                    transform: "translateY(-3px)",
+                  },
+                  cursor: "pointer"
+                }}>
+                  <GitHubIcon sx={{ 
+                    color: "#ffffff", 
+                    fontSize: 32, 
+                    mr: 2 
+                  }} />
+                  <Box>
+                    <Typography variant="subtitle1" sx={{ color: "white", fontWeight: 600 }}>
+                      GitHub
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: "rgba(255, 255, 255, 0.7)" }}>
+                      View my projects
+                    </Typography>
+                  </Box>
                 </Box>
-              </Box>
+              </a>
             </Box>
           </Grid>
 
@@ -221,7 +241,7 @@ export default function Contact() {
               sx={{
                 backgroundColor: "rgba(20, 20, 30, 0.6)",
                 backdropFilter: "blur(10px)",
-                padding: { xs: "30px", md: "40px" },
+                padding: { xs: "20px", sm: "25px", md: "30px" }, // Reduced padding on mobile
                 borderRadius: "16px",
                 boxShadow: "0px 4px 30px rgba(0, 0, 0, 0.3)",
                 border: "1px solid rgba(255, 255, 255, 0.05)",
@@ -254,18 +274,19 @@ export default function Contact() {
               <Typography 
                 variant="h5" 
                 sx={{ 
-                  marginBottom: "30px", 
+                  marginBottom: "20px", // Reduced margin
                   position: "relative", 
                   zIndex: 1, 
                   color: "white", 
-                  fontWeight: 600 
+                  fontWeight: 600,
+                  fontSize: { xs: "1.25rem", md: "1.5rem" }
                 }}
               >
                 Send Me a Message
               </Typography>
 
               <Box component="form" ref={form} onSubmit={sendEmail} sx={{ position: "relative", zIndex: 1 }}>
-                <Grid container spacing={3}>
+                <Grid container spacing={2}>
                   {/* Name Field */}
                   <Grid item xs={12} sm={6}>
                     <TextField
@@ -276,9 +297,11 @@ export default function Contact() {
                       fullWidth
                       required
                       variant="outlined"
+                      size="small" // Smaller fields on mobile
                       InputProps={{
                         sx: {
                           color: "white",
+                          height: { xs: "40px", md: "auto" }, // Explicitly control height on mobile
                           "&:hover .MuiOutlinedInput-notchedOutline": {
                             borderColor: "#00e6f6",
                           },
@@ -293,6 +316,7 @@ export default function Contact() {
                           "&.Mui-focused": {
                             color: "#00e6f6",
                           },
+                          fontSize: { xs: "0.8rem", md: "1rem" }, // Smaller label on mobile
                         },
                       }}
                       sx={{
@@ -316,9 +340,11 @@ export default function Contact() {
                       fullWidth
                       required
                       variant="outlined"
+                      size="small"
                       InputProps={{
                         sx: {
                           color: "white",
+                          height: { xs: "40px", md: "auto" }, 
                           "&:hover .MuiOutlinedInput-notchedOutline": {
                             borderColor: "#9333ea",
                           },
@@ -333,6 +359,7 @@ export default function Contact() {
                           "&.Mui-focused": {
                             color: "#9333ea",
                           },
+                          fontSize: { xs: "0.8rem", md: "1rem" },
                         },
                       }}
                       sx={{
@@ -354,9 +381,11 @@ export default function Contact() {
                       onChange={handleChange}
                       fullWidth
                       variant="outlined"
+                      size="small"
                       InputProps={{
                         sx: {
                           color: "white",
+                          height: { xs: "40px", md: "auto" },
                           "&:hover .MuiOutlinedInput-notchedOutline": {
                             borderColor: "#00e6f6",
                           },
@@ -371,6 +400,7 @@ export default function Contact() {
                           "&.Mui-focused": {
                             color: "#00e6f6",
                           },
+                          fontSize: { xs: "0.8rem", md: "1rem" },
                         },
                       }}
                       sx={{
@@ -383,7 +413,7 @@ export default function Contact() {
                     />
                   </Grid>
                   
-                  {/* Message Field */}
+                  {/* Message Field - reduced rows on mobile */}
                   <Grid item xs={12}>
                     <TextField
                       name="message"
@@ -393,7 +423,7 @@ export default function Contact() {
                       fullWidth
                       required
                       multiline
-                      rows={5}
+                      rows={{ xs: 3, md: 4 }}
                       variant="outlined"
                       InputProps={{
                         sx: {
@@ -412,6 +442,7 @@ export default function Contact() {
                           "&.Mui-focused": {
                             color: "#9333ea",
                           },
+                          fontSize: { xs: "0.8rem", md: "1rem" },
                         },
                       }}
                       sx={{
@@ -425,15 +456,15 @@ export default function Contact() {
                   </Grid>
                 </Grid>
 
-                {/* Submit Button */}
+                {/* Submit Button - Adjusted for better mobile visibility */}
                 <Button
                   type="submit"
                   variant="contained"
                   disabled={loading}
                   endIcon={<SendIcon />}
                   sx={{
-                    marginTop: "30px",
-                    padding: "12px 24px",
+                    marginTop: { xs: "16px", md: "24px" }, // Reduced top margin
+                    padding: { xs: "8px 16px", md: "12px 24px" },
                     background: "linear-gradient(135deg, #00e6f6 0%, #9333ea 100%)",
                     color: "white",
                     fontWeight: 600,
@@ -442,6 +473,9 @@ export default function Contact() {
                     position: "relative",
                     overflow: "hidden",
                     transition: "all 0.3s ease",
+                    width: { xs: "100%", sm: "auto" }, // Full width on small mobile
+                    fontSize: { xs: "0.9rem", md: "1rem" },
+                    height: { xs: "40px", md: "auto" }, // Fixed height on mobile
                     "&:hover": {
                       boxShadow: "0 15px 30px rgba(0, 0, 0, 0.3)",
                       transform: "translateY(-3px)",
@@ -469,7 +503,7 @@ export default function Contact() {
               {userMessage && (
                 <Typography
                   sx={{
-                    marginTop: "20px",
+                    marginTop: "16px",
                     padding: "10px 16px",
                     borderRadius: "8px",
                     textAlign: "center",
@@ -492,6 +526,3 @@ export default function Contact() {
     </Box>
   );
 }
-
-
-                  

@@ -1,8 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom"; // Import Link for proper routing
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
 import { keyframes } from "@emotion/react";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
@@ -19,6 +19,32 @@ const fadeUp = keyframes`
 `;
 
 const AboutMe = () => {
+  // Gradient text style
+  const gradientText = {
+    background: 'linear-gradient(135deg, #00e6f6 30%, #9333ea 70%)',
+    WebkitBackgroundClip: 'text',
+    backgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    fontWeight: 700
+  };
+
+  // Button style with improvements for mobile
+  const button = {
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '12px 24px',
+    background: 'linear-gradient(135deg, #00e6f6 0%, #9333ea 100%)',
+    color: 'white',
+    fontWeight: 600,
+    borderRadius: '30px',
+    textDecoration: 'none',
+    boxShadow: '0 10px 20px rgba(0, 0, 0, 0.2)',
+    transition: 'all 0.3s ease',
+    minHeight: '44px', // Ensures good tap target on mobile
+    minWidth: '180px'  // Ensures button is wide enough on mobile
+  };
+
   return (
     <Grid
       container
@@ -26,18 +52,21 @@ const AboutMe = () => {
       sx={{
         display: "flex",
         justifyContent: "space-between",
-        margin: "15px",
-        marginBottom: "5%",
+        margin: { xs: "5px", sm: "15px" }, // Reduced margin on mobile
+        marginBottom: { xs: "2%", sm: "5%" }, // Reduced margin on mobile
         animation: `${fadeUp} 0.8s ease-out forwards`,
+        border: "none", // Ensure no borders
+        borderBottom: "none", // Explicitly remove bottom border
+        overflow: "hidden" // Prevent any overflow issues
       }}
     >
       {/* About Me Text Section */}
       <Grid item xs={12} sm={6} sx={{ flexBasis: "50%" }}>
-        <section className="text-white py-20">
+        <section className="text-white py-10 sm:py-20"> {/* Reduced padding on mobile */}
           <Typography
             variant="h2"
             sx={{
-              fontSize: { xs: "2rem", sm: "2.5rem" },
+              fontSize: { xs: "1.8rem", sm: "2.5rem" }, // Smaller font on mobile
               fontWeight: 700,
               mb: 3,
               background: "linear-gradient(135deg, #00e6f6 30%, #9333ea 70%)",
@@ -51,7 +80,7 @@ const AboutMe = () => {
           </Typography>
 
           <Box sx={{ maxWidth: "800px" }}>
-            <Typography variant="body1" sx={{ mb: 3, color: "#e0e0e0" }}>
+            <Typography variant="body1" sx={{ mb: 3, color: "#e0e0e0", fontSize: { xs: "0.95rem", sm: "1rem" } }}>
               Let's turn ideas into reality! Whether you're looking to build an
               innovative application or optimize an existing solution. I'm here
               to create, collaborate, and push boundaries. Explore my projects
@@ -59,7 +88,7 @@ const AboutMe = () => {
               something amazing.
             </Typography>
 
-            <Typography variant="body1" sx={{ mb: 3, color: "#e0e0e0" }}>
+            <Typography variant="body1" sx={{ mb: 3, color: "#e0e0e0", fontSize: { xs: "0.95rem", sm: "1rem" } }}>
               With expertise in both{" "}
               <Box
                 component="span"
@@ -92,7 +121,7 @@ const AboutMe = () => {
               high-performance web applications.
             </Typography>
 
-            <Typography variant="body1" sx={{ mb: 3, color: "#e0e0e0" }}>
+            <Typography variant="body1" sx={{ mb: 3, color: "#e0e0e0", fontSize: { xs: "0.95rem", sm: "1rem" } }}>
               My hands-on experience includes working with{" "}
               <Box
                 component="span"
@@ -110,7 +139,7 @@ const AboutMe = () => {
               , ensuring seamless functionality from concept to deployment.
             </Typography>
 
-            <Typography variant="body1" sx={{ mb: 3, color: "#e0e0e0" }}>
+            <Typography variant="body1" sx={{ mb: 3, color: "#e0e0e0", fontSize: { xs: "0.95rem", sm: "1rem" } }}>
               I thrive at the intersection of design and functionality, bridging
               the gap between intuitive user experiences and powerful backend
               architecture. Whether it's building scalable systems, refining UI
@@ -119,7 +148,7 @@ const AboutMe = () => {
               impact.
             </Typography>
 
-            <Typography variant="body1" sx={{ color: "#e0e0e0" }}>
+            <Typography variant="body1" sx={{ color: "#e0e0e0", fontSize: { xs: "0.95rem", sm: "1rem" } }}>
               Let's build something{" "}
               <Box
                 component="span"
@@ -140,12 +169,12 @@ const AboutMe = () => {
         </section>
 
         {/* Two Separate Cards - Updated modern style */}
-        <Grid container spacing={3} sx={{ mt: 6 }}>
+        <Grid container spacing={3} sx={{ mt: { xs: 4, sm: 6 } }}>
           {/* Contact Me Card */}
           <Grid item xs={12} sm={6}>
             <Box
-              component={Link}
-              href="/contact"
+              component={Link} // Changed from MUI Link to react-router-dom Link
+              to="/contact" // Changed from href to to for proper routing
               sx={{
                 borderRadius: "8px",
                 padding: "16px",
@@ -186,8 +215,8 @@ const AboutMe = () => {
           {/* View Resume Card */}
           <Grid item xs={12} sm={6}>
             <Box
-              component={Link}
-              href="/resume.pdf"
+              component={Link} // Using Link for consistency
+              to="/resume.pdf" // This will need appropriate handling for file downloads
               download="Cyrus_Esfahani_Resume.pdf"
               sx={{
                 borderRadius: "8px",
@@ -235,19 +264,20 @@ const AboutMe = () => {
         sx={{
           position: "relative",
           display: "flex",
-          justifyContent: "flex-end",
-          mt: { xs: 8, sm: 0 },
-          pr: { xs: 2, sm: 8 },
+          justifyContent: { xs: "center", sm: "flex-end" }, // Center on mobile
+          mt: { xs: 6, sm: 0 }, // Increased spacing on mobile
+          pr: { xs: 0, sm: 8 }, // Remove padding on mobile
+          mb: { xs: 4, sm: 0 }, // Add margin bottom on mobile
         }}
       >
         {/* Primary breathing glow effect - first layer */}
         <Box
           sx={{
             position: "absolute",
-            width: { xs: "340px", sm: "450px" },
-            height: { xs: "340px", sm: "450px" },
-            right: { xs: "10px", sm: "65px" },
-            top: "-20px",
+            width: { xs: "300px", sm: "450px" },
+            height: { xs: "300px", sm: "450px" },
+            right: { xs: "auto", sm: "65px" }, // Center on mobile
+            top: { xs: "-10px", sm: "-20px" },
             background:
               "radial-gradient(circle at center, rgba(0, 230, 246, 0.8) 0%, rgba(147, 51, 234, 0.6) 40%, rgba(0, 0, 0, 0) 70%)",
             filter: "blur(45px)",
@@ -276,10 +306,10 @@ const AboutMe = () => {
         <Box
           sx={{
             position: "absolute",
-            width: { xs: "300px", sm: "400px" },
-            height: { xs: "300px", sm: "400px" },
-            right: { xs: "25px", sm: "90px" },
-            top: "15px",
+            width: { xs: "280px", sm: "400px" },
+            height: { xs: "280px", sm: "400px" },
+            right: { xs: "auto", sm: "90px" }, // Center on mobile
+            top: { xs: "15px", sm: "15px" },
             background:
               "radial-gradient(circle at center, rgba(147, 51, 234, 0.7) 0%, rgba(0, 230, 246, 0.5) 50%, rgba(0, 0, 0, 0) 70%)",
             filter: "blur(40px)",
@@ -305,52 +335,24 @@ const AboutMe = () => {
           }}
         />
 
-        {/* Third decorative glow pulse */}
-        <Box
-          sx={{
-            position: "absolute",
-            width: "220px",
-            height: "220px",
-            right: { xs: "70px", sm: "140px" },
-            top: "80px",
-            background:
-              "radial-gradient(circle at center, rgba(0, 230, 246, 1) 0%, rgba(0, 230, 246, 0) 70%)",
-            filter: "blur(25px)",
-            borderRadius: "50%",
-            zIndex: 0,
-            opacity: 0.6,
-            animation: "pulse 4s infinite alternate ease-in-out",
-            "@keyframes pulse": {
-              "0%": {
-                transform: "scale(0.7)",
-                opacity: 0.5,
-                background:
-                  "radial-gradient(circle at center, rgba(0, 230, 246, 1) 0%, rgba(0, 230, 246, 0) 70%)",
-              },
-              "100%": {
-                transform: "scale(1.2)",
-                opacity: 0.7,
-                background:
-                  "radial-gradient(circle at center, rgba(147, 51, 234, 1) 0%, rgba(147, 51, 234, 0) 70%)",
-              },
-            },
-          }}
-        />
+        {/* Removed third decorative glow pulse for mobile simplicity */}
 
         <Box
           sx={{
             position: "relative",
-            width: "350px",
-            height: "350px",
+            width: { xs: "300px", sm: "350px" }, // Smaller on mobile
+            height: { xs: "300px", sm: "350px" }, // Smaller on mobile
             zIndex: 2,
             "&:before": {
               // Background box
               content: '""',
               position: "absolute",
-              bottom: "-30px",
-              right: "-30px",
-              width: "350px",
-              height: "350px",
+              bottom: "-20px", // Reduced on mobile
+              right: { xs: 0, sm: "-30px" }, // Centered on mobile
+              left: { xs: 0, sm: "auto" }, // Centered on mobile
+              width: { xs: "90%", sm: "350px" }, // Adjusted for mobile
+              height: { xs: "90%", sm: "350px" }, // Adjusted for mobile
+              margin: { xs: "auto", sm: 0 }, // Center on mobile
               backgroundColor: "#2d2d2d",
               borderRadius: "8px",
               zIndex: 1,
@@ -358,8 +360,8 @@ const AboutMe = () => {
               border: "1px solid rgba(147, 51, 234, 0.2)",
             },
             "&:after": {
-              // Dots pattern
-              content: '""',
+              // Dots pattern - removed on mobile for simplicity
+              content: { xs: "none", sm: '""' },
               position: "absolute",
               bottom: "10px",
               right: "10px",
@@ -380,19 +382,23 @@ const AboutMe = () => {
           <Box
             sx={{
               position: "relative",
-              width: "350px",
-              height: "350px",
+              width: { xs: "300px", sm: "350px" }, // Smaller on mobile
+              height: { xs: "300px", sm: "350px" }, // Smaller on mobile
               borderRadius: "8px",
               overflow: "hidden",
-              transform: "translate(-30px, -30px)",
+              transform: { xs: "translate(0, -15px)", sm: "translate(-30px, -30px)" }, // Centered on mobile
               zIndex: 3,
               boxShadow:
                 "0 15px 30px rgba(0,0,0,0.3), 0 0 0 1px rgba(0, 230, 246, 0.2)",
+              transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+              margin: { xs: "0 auto", sm: 0 }, // Center on mobile
               "&:hover": {
-                transform: "translate(-30px, -35px)",
+                transform: { 
+                  xs: "translate(0, -20px)", 
+                  sm: "translate(-30px, -35px)" 
+                },
                 boxShadow:
                   "0 25px 50px rgba(0,0,0,0.4), 0 0 0 2px rgba(0, 230, 246, 0.3)",
-                transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
               },
             }}
           >
@@ -407,6 +413,68 @@ const AboutMe = () => {
               }}
             />
           </Box>
+        </Box>
+      </Grid>
+
+      {/* Let's Connect section - Made responsive for mobile */}
+      <Grid item xs={12} sx={{ 
+        mt: { xs: 4, sm: 8 },
+        mb: { xs: 6, sm: 10 },
+        px: { xs: 2, sm: 4 },
+        borderTop: "none",
+        borderBottom: "none"
+      }}>
+        <Box sx={{ 
+          background: 'linear-gradient(135deg, rgba(0, 230, 246, 0.1) 0%, rgba(147, 51, 234, 0.1) 100%)',
+          border: '1px solid rgba(255, 255, 255, 0.05)',
+          borderRadius: '16px', 
+          padding: { xs: '24px 16px', sm: '32px 48px' },
+          textAlign: 'center',
+          position: 'relative',
+          overflow: 'hidden',
+        }}>
+          {/* Background effect */}
+          <Box sx={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: `
+              radial-gradient(circle at 20% 30%, rgba(0, 230, 246, 0.5) 0%, transparent 50%),
+              radial-gradient(circle at 80% 70%, rgba(147, 51, 234, 0.5) 0%, transparent 50%)
+            `,
+            filter: 'blur(50px)',
+            opacity: 0.1,
+            zIndex: 0,
+          }} />
+
+          <Typography variant="h3" sx={{ 
+            fontSize: { xs: '1.8rem', sm: '2.5rem', md: '3rem' },
+            fontWeight: 700,
+            mb: 2,
+            zIndex: 1,
+            position: 'relative'
+          }}>
+            Let's Connect & Collaborate
+          </Typography>
+          
+          <Typography sx={{ 
+            color: 'rgba(255, 255, 255, 0.8)',
+            mb: { xs: 4, sm: 6 },
+            fontSize: { xs: '1rem', sm: '1.1rem' },
+            maxWidth: '700px',
+            mx: 'auto',
+            zIndex: 1,
+            position: 'relative'
+          }}>
+            Feel free to explore my <span style={gradientText}>projects</span> or reach out if collaboration sounds exciting!
+          </Typography>
+          
+          {/* Fixed Get In Touch button with react-router-dom Link */}
+          <Link to="/contact" style={{...button, textDecoration: 'none'}} className="hover:shadow-lg hover:shadow-cyan-500/30 relative z-10">
+            Get In Touch <ArrowForwardIcon sx={{ ml: 1 }} />
+          </Link>
         </Box>
       </Grid>
     </Grid>

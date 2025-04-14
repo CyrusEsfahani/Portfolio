@@ -123,7 +123,7 @@ export default function Navigation() {
         <List sx={{ padding: 0 }}>
           {/* Home */}
           <ListItem 
-            button 
+            component="div" 
             onClick={() => {
               navigate("/");
               setOpen(false);
@@ -146,7 +146,7 @@ export default function Navigation() {
 
           {/* Portfolio Section */}
           <ListItem 
-            button 
+            component="div" 
             onClick={handlePortfolioClick}
             sx={menuItemHoverStyle}
           >
@@ -163,7 +163,7 @@ export default function Navigation() {
 
           {/* Projects Section */}
           <ListItem 
-            button
+            component="div"
             sx={menuItemHoverStyle}
             onClick={() => {
               navigate("/projects");
@@ -186,7 +186,7 @@ export default function Navigation() {
 
           {/* Contact Section */}
           <ListItem 
-            button
+            component="div"
             sx={menuItemHoverStyle}
             onClick={() => {
               navigate("/contact");

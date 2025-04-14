@@ -144,7 +144,7 @@ const AboutMe = () => {
           {/* Contact Me Card */}
           <Grid item xs={12} sm={6}>
             <Box
-              component={Link}
+              component="a"
               href="/contact"
               sx={{
                 borderRadius: "8px",

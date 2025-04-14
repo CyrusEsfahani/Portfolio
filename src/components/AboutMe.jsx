@@ -139,98 +139,48 @@ const AboutMe = () => {
           </Box>
         </section>
 
-        {/* Two Separate Cards - Updated modern style */}
-        <Grid container spacing={3} sx={{ mt: 6 }}>
-          {/* Contact Me Card */}
-          <Grid item xs={12} sm={6}>
-            <Box
-              component="a"
-              href="/contact"
-              onClick={(e) => {
-                e.preventDefault();
-                window.location.href = "/contact";
-              }}
+        {/* Only Resume Button - Centered */}
+        <Box sx={{ mt: 6, display: 'flex', justifyContent: 'center' }}>
+          <Box
+            component={Link}
+            href="/SEResume.pdf"
+            download="Cyrus_Esfahani_Resume.pdf"
+            sx={{
+              borderRadius: "8px",
+              padding: "16px",
+              width: "250px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              textDecoration: "none",
+              background:
+                "linear-gradient(135deg, rgba(147, 51, 234, 0.15) 0%, rgba(0, 230, 246, 0.15) 100%)",
+              backdropFilter: "blur(10px)",
+              border: "1px solid rgba(147, 51, 234, 0.3)",
+              transition: "all 0.3s ease",
+              "&:hover": {
+                transform: "translateY(-4px)",
+                boxShadow: "0px 8px 15px rgba(147, 51, 234, 0.2)",
+                background:
+                  "linear-gradient(135deg, rgba(147, 51, 234, 0.25) 0%, rgba(0, 230, 246, 0.25) 100%)",
+              },
+            }}
+          >
+            <Typography
               sx={{
-                borderRadius: "8px",
-                padding: "16px",
+                color: "white",
+                fontWeight: 600,
+                fontSize: "1rem",
+                textAlign: "center",
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "center",
-                textDecoration: "none",
-                height: "100%",
-                background:
-                  "linear-gradient(135deg, rgba(0, 230, 246, 0.15) 0%, rgba(147, 51, 234, 0.15) 100%)",
-                backdropFilter: "blur(10px)",
-                border: "1px solid rgba(0, 230, 246, 0.3)",
-                transition: "all 0.3s ease",
-                cursor: "pointer",
-                "&:hover": {
-                  transform: "translateY(-4px)",
-                  boxShadow: "0px 8px 15px rgba(0, 230, 246, 0.2)",
-                  background:
-                    "linear-gradient(135deg, rgba(0, 230, 246, 0.25) 0%, rgba(147, 51, 234, 0.25) 100%)",
-                },
+                gap: 1,
               }}
             >
-              <Typography
-                sx={{
-                  color: "white",
-                  fontWeight: 600,
-                  fontSize: "1rem",
-                  textAlign: "center",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 1,
-                }}
-              >
-                Contact Me <ArrowForwardIcon fontSize="small" />
-              </Typography>
-            </Box>
-          </Grid>
-
-          {/* View Resume Card */}
-          <Grid item xs={12} sm={6}>
-            <Box
-              component={Link}
-              href="/SEResume.pdf"
-              download="Cyrus_Esfahani_Resume.pdf"
-              sx={{
-                borderRadius: "8px",
-                padding: "16px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                textDecoration: "none",
-                height: "100%",
-                background:
-                  "linear-gradient(135deg, rgba(147, 51, 234, 0.15) 0%, rgba(0, 230, 246, 0.15) 100%)",
-                backdropFilter: "blur(10px)",
-                border: "1px solid rgba(147, 51, 234, 0.3)",
-                transition: "all 0.3s ease",
-                "&:hover": {
-                  transform: "translateY(-4px)",
-                  boxShadow: "0px 8px 15px rgba(147, 51, 234, 0.2)",
-                  background:
-                    "linear-gradient(135deg, rgba(147, 51, 234, 0.25) 0%, rgba(0, 230, 246, 0.25) 100%)",
-                },
-              }}
-            >
-              <Typography
-                sx={{
-                  color: "white",
-                  fontWeight: 600,
-                  fontSize: "1rem",
-                  textAlign: "center",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 1,
-                }}
-              >
-                View Resume <ArrowForwardIcon fontSize="small" />
-              </Typography>
-            </Box>
-          </Grid>
-        </Grid>
+              View Resume <ArrowForwardIcon fontSize="small" />
+            </Typography>
+          </Box>
+        </Box>
       </Grid>
       {/* Profile Image Section with enhanced breathing glow effect */}
       <Grid

@@ -221,278 +221,31 @@ header.scrolled {
   background: linear-gradient(to bottom, #00cbdd, #7e2ac6);
 }
 
-/* Add these styles to your global CSS file */
-
-/* Remove horizontal border lines throughout the site */
-hr, 
-.border-t, 
-.border-b, 
-[style*="border-top"], 
-[style*="border-bottom"],
-section::after,
-section::before,
-div::after,
-div::before {
-  border-top: none !important;
-  border-bottom: none !important;
-}
-
-/* Remove any horizontal divider lines */
-.divider, 
-.separator, 
-.horizontal-line {
-  display: none !important;
-}
-
-/* Clean up any default borders on sections */
-section, 
-div.container, 
-div.section, 
-main > div {
-  border: none !important;
-}
-
-/* Fix any gap between sections */
-section + section,
-div + div {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-}
-
-/* Optimize mobile form fields */
-input, 
-textarea, 
-select,
-button {
-  font-size: 16px !important; /* Prevents iOS zoom on focus */
-  min-height: 44px; /* Good tap target size */
-}
-
-/* Ensure form buttons are visible */
-button[type="submit"],
-input[type="submit"] {
-  width: 100% !important;
-  margin-top: 16px !important;
-  padding: 12px !important;
-  height: auto !important;
-  min-height: 44px !important;
-  font-size: 16px !important;
-  border-radius: 30px !important;
-}
-
-/* Better contrast for form fields on dark backgrounds */
-input, 
-textarea, 
-select {
-  background-color: rgba(30, 30, 40, 0.7) !important;
-  color: white !important;
-}
-
-/* Fix image card display on mobile */
-.image-card, 
-.profile-image, 
-.photo-container,
-[style*="position: relative"] img {
-  max-width: 100% !important;
-  height: auto !important;
-  display: block !important;
-  margin: 0 auto !important;
-}
-
-/* Enhanced gradient buttons */
-a[href="/contact"],
-a[to="/contact"],
-.gradient-button,
-button.gradient {
-  background: linear-gradient(135deg, #00e6f6 0%, #9333ea 100%) !important;
-  color: white !important;
-  border-radius: 30px !important;
-  padding: 10px 20px !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  text-decoration: none !important;
-  font-weight: 600 !important;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;
-  transition: all 0.3s ease !important;
-  border: none !important;
-  min-height: 44px !important;
-  min-width: 150px !important;
-}
-
-a[href="/contact"]:hover,
-a[to="/contact"]:hover,
-.gradient-button:hover,
-button.gradient:hover {
-  transform: translateY(-3px) !important;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3) !important;
-}
-
-/* Fix for mobile containers */
-.container, 
-.max-w-6xl, 
-.max-w-7xl {
-  padding-left: 16px !important;
-  padding-right: 16px !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  overflow-x: hidden !important;
-}
-
-/* Prevent any horizontal scrolling */
-html, 
-body {
-  overflow-x: hidden !important;
-  width: 100% !important;
-}
-
-/* Ensure border is truly gone everywhere */
-*, *::before, *::after {
-  box-sizing: border-box !important;
-  border-top: none !important;
-  border-bottom: none !important;
-}
-
-/* Add these mobile-specific CSS optimizations to your global stylesheet */
-
-/* Mobile-first adjustments */
-@media (max-width: 767px) {
-  /* Improved spacing for mobile */
+/* Mobile-specific fixes */
+@media (max-width: 600px) {
+  /* Ensure proper spacing at bottom of page */
   body {
-    padding-bottom: 60px; /* Extra padding at bottom of page */
+    min-height: 100%;
+    padding-bottom: 60px;
   }
   
-  /* Ensure the Send Message button is fully visible */
-  form button[type="submit"],
-  form input[type="submit"] {
-    position: relative !important;
-    bottom: auto !important;
-    left: auto !important;
-    right: auto !important;
-    width: 100% !important;
-    margin: 16px 0 0 0 !important;
-    z-index: 10 !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: none !important;
-    height: 44px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+  /* Fix for multiline text area on mobile */
+  .MuiOutlinedInput-multiline {
+    max-height: 120px;
   }
   
-  /* Fix icon sizes on mobile */
-  .tech-icon-container svg,
-  [class*="Fa"] svg,
-  [class*="Si"] svg {
-    width: 40px !important;
-    height: 40px !important;
+  /* Ensure button is visible */
+  .MuiButton-root[type="submit"] {
+    margin-bottom: 40px;
   }
   
-  /* Adjust text sizes for better readability */
-  h1, .text-4xl, .text-5xl {
-    font-size: 2rem !important;
-  }
-  
-  h2, .text-3xl {
-    font-size: 1.75rem !important;
-  }
-  
-  h3, .text-2xl {
-    font-size: 1.5rem !important;
-  }
-  
-  h4, .text-xl {
-    font-size: 1.25rem !important;
-  }
-  
-  p, li, .text-base {
-    font-size: 0.95rem !important;
-  }
-  
-  /* Reduce padding on containers */
-  .container,
-  section,
-  .py-10,
-  .py-16,
-  .py-20 {
-    padding-top: 2rem !important;
-    padding-bottom: 2rem !important;
-  }
-  
-  /* Fix image card display on mobile */
-  .image-card, 
-  .profile-image, 
-  [class*="Box_"] img,
-  [style*="position: relative"] img {
-    max-width: 100% !important;
-    height: auto !important;
-    margin: 0 auto !important;
-    transform: none !important;
-  }
-  
-  /* Fix for contact form on mobile */
-  form {
-    padding: 16px !important;
-  }
-  
-  /* Fix specifically for contact buttons */
-  .contact-info a,
-  .contact-links a {
-    display: block !important;
-    margin-bottom: 8px !important;
-  }
-  
-  /* Remove fixed height on message textarea */
-  textarea {
-    height: auto !important;
-    min-height: 100px !important;
-  }
-  
-  /* Fix any overflow issues */
-  div[style*="overflow"] {
-    overflow: visible !important;
-  }
-  
-  /* Fix grid layouts on mobile */
-  .grid {
-    grid-template-columns: 1fr !important;
-  }
-  
-  /* Fix About page photo container on mobile */
-  [style*="position: relative"][style*="width: 350px"],
-  [style*="position: relative"][style*="width: 300px"] {
-    width: 100% !important;
-    max-width: 280px !important;
-    margin: 0 auto !important;
-    transform: none !important;
-  }
-  
-  /* Ensure headers have enough contrast */
-  h1, h2, h3, h4, h5, h6 {
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+  /* Fix page height */
+  .MuiBox-root[style*="min-height: 100vh"] {
+    min-height: auto !important;
+    padding-bottom: 80px !important;
   }
 }
 
-/* Fix email/contact section if it's cutoff */
-@media (max-width: 480px) {
-  a[href^="mailto:"] .MuiTypography-root,
-  a[href^="https://www.linkedin.com"] .MuiTypography-root,
-  a[href^="https://github.com"] .MuiTypography-root {
-    font-size: 0.8rem !important;
-  }
-  
-  /* Even smaller icons on very small screens */
-  svg {
-    transform: scale(0.9) !important;
-  }
-  
-  /* Force shorter rows in textareas */
-  textarea {
-    rows: 3 !important;
-    height: 90px !important;
-  }
-}
 
 /* main {
   padding-left: 150px;

@@ -1,11 +1,40 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <!-- Changed the favicon to use the C logo by creating a dynamic favicon -->
-  <link rel="icon" href="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%230f0f14' stroke='%2300e6f6' stroke-width='4'/%3E%3Ctext x='50' y='67' font-family='Inter, Arial, sans-serif' font-weight='700' font-size='55' text-anchor='middle' fill='%2300e6f6'%3EC%3C/text%3E%3C/svg%3E" type="image/svg+xml" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Replaced favicon with inline SVG that looks like your C logo -->
+  <link rel="icon" href="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%230f0f14' stroke='%2300e6f6' stroke-width='4'/%3E%3Ctext x='50' y='68' font-family='Inter, Arial, sans-serif' font-weight='700' font-size='55' text-anchor='middle' fill='%2300e6f6'%3EC%3C/text%3E%3C/svg%3E" type="image/svg+xml" />
+  <!-- Add these meta tags for better mobile experience -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
   <title>Cyrus Esfahani Portfolio</title>
+  <style>
+    /* Add these styles directly to index.html to ensure they load first */
+    @media (max-width: 600px) {
+      /* Reset any problematic viewport settings */
+      html, body {
+        height: auto !important;
+        min-height: 100% !important;
+        overflow-x: hidden !important;
+        position: relative !important;
+      }
+      
+      /* Fix message field height */
+      textarea {
+        max-height: 120px !important;
+      }
+      
+      /* Ensure bottom padding for form visibility */
+      form {
+        margin-bottom: 30px !important;
+      }
+      
+      /* Push content up to make room for button */
+      .send-message-container {
+        margin-bottom: 60px !important;
+      }
+    }
+  </style>
 </head>
 <body>
   <div id="root"></div>

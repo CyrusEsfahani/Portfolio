@@ -146,6 +146,10 @@ const AboutMe = () => {
             <Box
               component="a"
               href="/contact"
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.href = "/contact";
+              }}
               sx={{
                 borderRadius: "8px",
                 padding: "16px",
@@ -159,6 +163,7 @@ const AboutMe = () => {
                 backdropFilter: "blur(10px)",
                 border: "1px solid rgba(0, 230, 246, 0.3)",
                 transition: "all 0.3s ease",
+                cursor: "pointer",
                 "&:hover": {
                   transform: "translateY(-4px)",
                   boxShadow: "0px 8px 15px rgba(0, 230, 246, 0.2)",

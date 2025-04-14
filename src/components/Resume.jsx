@@ -30,6 +30,7 @@ import {
   SiCypress
 } from 'react-icons/si';
 import { MdOutlineDesignServices } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 
 const Resume = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -258,7 +259,7 @@ const Resume = () => {
             </div>
           </div>
 
-          {/* Let's Connect Section */}
+          {/* Let's Connect Section - Fixed Link */}
           <div style={{ 
             background: 'linear-gradient(135deg, rgba(0, 230, 246, 0.1) 0%, rgba(147, 51, 234, 0.1) 100%)',
             border: '1px solid rgba(255, 255, 255, 0.05)',
@@ -296,9 +297,10 @@ const Resume = () => {
               Feel free to explore my <span style={gradientText}>projects</span> or reach out if collaboration sounds exciting!
             </p>
             
-            <a href="/contact" style={button} className="relative z-10">
+            {/* Changed from <a href> to <Link to> for React Router */}
+            <Link to="/contact" style={button} className="relative z-10">
               Get In Touch <FaArrowRight className="ml-2" />
-            </a>
+            </Link>
           </div>
         </div>
 

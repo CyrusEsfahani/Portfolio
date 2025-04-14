@@ -178,7 +178,9 @@ const AboutMe = () => {
                   gap: 1,
                 }}
               >
+                <Link to="/contact" style={button} className="relative z-10">
                 Contact Me <ArrowForwardIcon fontSize="small" />
+                </Link>
               </Typography>
             </Box>
           </Grid>
